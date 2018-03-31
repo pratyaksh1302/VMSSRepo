@@ -1,0 +1,81 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "vmSku": {
+            "defaultValue": "Standard_F2",
+            "type": "String",
+            "metadata": {
+                "description": "Size of VMs in the VM Scale Set."
+            }
+        },
+        "vmssName": {
+            "maxLength": 61,
+            "type": "String",
+            "metadata": {
+                "description": "The name of the VM Scale Set."
+            }
+        },
+        "instanceCount": {
+            "defaultValue": 2,
+            "maxValue": 100,
+            "type": "Int",
+            "metadata": {
+                "description": "Initial number of VM instances (100 or less)."
+            }
+        },
+        "adminUsername": {
+            "type": "String",
+            "metadata": {
+                "description": "Admin username on all VMs."
+            }
+        },
+        "adminPassword": {
+            "type": "SecureString",
+            "metadata": {
+                "description": "Admin password on all VMs."
+            }
+        },
+        "upgradePolicy": {
+            "defaultValue": "Manual",
+            "allowedValues": [
+                "Manual",
+                "Automatic"
+            ],
+            "type": "String",
+            "metadata": {
+                "description": "The upgrade policy for the VM Scale Set, either Manual of Automatic."
+            }
+        },
+        "existingVirtualNetworkResourceGroup": {
+            "type": "String",
+            "metadata": {
+                "description": "The name of the Resource Group which contains the existing Virtual Network that this VM Scale Set will be connected to."
+            }
+        },
+        "existingVirtualNetworkName": {
+            "type": "String",
+            "metadata": {
+                "description": "The name of the existing Virtual Network that this VM Scale Set will be connected to."
+            }
+        },
+        "existingVirtualNetworkSubnet": {
+            "type": "String",
+            "metadata": {
+                "description": "The name of the existing subnet that this VM Scale Set will be connected to."
+            }
+        },
+        "existingManagedImageResourceGroup": {
+            "type": "String",
+            "metadata": {
+                "description": "The name of the Resource Group containing the Image that instances of the VM Scale Set will be created from. Images can be created by capturing Azure VMs."
+            }
+        },
+        "existingManagedImageName": {
+            "type": "String",
+            "metadata": {
+                "description": "The name of the Image that instances of the VM Scale Set will be created from. Images can be created by capturing Azure VMs."
+            }
+        }
+    }
+}
